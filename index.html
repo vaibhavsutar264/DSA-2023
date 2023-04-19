@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>hi</h1>
+    <button id="button">Print Screen</button>
+    <button onclick="printWindow()">Print Screen</button>
+    <button onclick="closeWindow()">Close Screen</button>
+    <button onclick="alertANumber()">For alert a value between 0 to 10</button>
+    <button id="button-again" >For closing this</button>
+    <script>
+        //         {
+        //  let password; 
+        //     do { password = prompt("what is the password"); 
+        // } 
+        //     while (password !== "let me in"); 
+        // }
+        {
+            for (let i = 30; i > 0; i=i-3) {
+                //if u wants to increment a value instead of i++ then first use i then = the i+ the increment value u wants to perform
+                const element = [i];
+                console.log(element);
+            }
+
+
+            // now if u wants to find the array element which are having index, index multiply by 2 means if index is 1 then 1*2=2 , 2 then 2*2=4 so index value shown will be 4th index value of an array
+            let list = [1,2,3,4,5,6,7]
+            for (let i = 1; i < list.length; i++) {
+                const element = list[i=i*2];
+                console.log(element);
+            } // output : 3,7
+
+            // for in loop
+
+            const numbers = [45, 4, 9, 16, 25]
+
+            const obj = {
+                name: "vaibhav",
+                rank: "1",
+                classKey: {
+                    className: "1A",
+                    std: "10th"
+                }
+            }
+            for (const key in numbers) {
+                if (key == 2) {
+                    break;
+                    //in this break operater work
+                }
+                    console.log(key);
+            } //output : 0,1,2,3,4
+            for (const key in obj) {
+                    console.log(key);
+            } //output : name,rank,classKey
+
+            // now for of loop 
+
+            for (const key of numbers) {
+                if (key == 16) {
+                    break;
+                    //in this break operater work
+                }
+                    console.log(key);
+            } //output before if statement : 45, 4, 9, 16, 25, output after if statement 45,4,9
+
+            // for (const key of obj) {
+            //         console.log(key);
+            // } 
+            //output : error saying non iterable
+
+            // for loop 
+
+            for (let i = 0; i < numbers.length; i++) {
+                if (numbers[i] == 16) {
+                    break;
+                    //in this break operater work
+                }
+                console.log('====================================');
+                console.log(numbers[i]);
+                console.log('====================================');
+
+            } //output without : 45,4,9,16,25, with if statement output:45,4,9
+
+
+            // for each
+
+            numbers.forEach((element, index) => {
+                console.log('====================================');
+                console.log(`"value of array": ${element}, and index of it is ${index}`);
+                console.log('====================================');
+            }); //output : "value of array": 45, and index of it is 0,"value of array": 4, and index of it is 1,"value of array": 9, and index of it is 2,"value of array": 16, and index of it is 3,"value of array": 25, and index of it is 4
+
+
+            // now suppose if u doesnt wants to print some value in console then
+
+            numbers.forEach((element, index) => {
+
+                if (element > 16) {
+                    return false;
+                    //in this break operater wont work
+                } // for this output is 4,9,16
+                if (element == 16) {
+                    console.log(element);
+
+                } // for this output is 16
+                console.log('====================================');
+                console.log(`"value of array": ${element}, and index of it is ${index}`);
+                console.log('====================================');
+            }); //output : "value of array": 4, and index of it is 1,"value of array": 9, and index of it is 2,"value of array": 16, and index of it is 3,"value of array": 25, and index of it is 4
+
+
+
+            // when array has number and string
+
+            let arr = [[1, "one", 2, "two"], [3, "three", 4, "four"]];
+            for (var i = 0; i < arr.length; i++) {
+                for (var j = 0; j < arr[i].length; j++) {
+                    console.log(arr[i][j]);
+                }
+            }
+            // output: 1, one, 2, two,3, three, 4, four
+
+
+            // for endless output
+
+            for (var i = 0; ; i++) {
+                console.log(i);
+                if (i == 5) {
+                    break;
+                }
+            }
+
+            // output: 0 1 2 3 4 5
+
+            // map method 
+
+            // const numbers = [45, 4, 9, 16, 25] writing here again just for have a watch on it but this is defined above
+
+            const mapFunctioTesting = numbers.map((x) => {
+                return x * 2 + " and " + x.toString(2);
+                //here if we apply a foreach instead of map then it will show a return as undefined for each only supports console.log not a return statement
+                //here value is doubled by x*2 and value made as binary with to string(2);
+                //binary number is from 2 to 16
+                // return x.toString(2);
+                // console.log(x*2);
+            })
+            console.log(mapFunctioTesting);
+            output: (5) ['90 and 101101', '8 and 100', '18 and 1001', '32 and 10000', '50 and 11001']
+
+            // filter method
+
+            const filterFunctionTesting = numbers.filter((x) => {
+                //below method is used to find the even values
+                return x % 2 === 0;
+                // return x > 16;
+            })
+
+            console.log(filterFunctionTesting);
+            // output when x % 2 === 0;: (3) [4, 16] , because remaining values are odd values
+            // output when x%2: (3) [4, 16, 25] , 9 and 45 not taken because they are divisible by 3 
+            // output when x > 16: (3) [45,25] because these are greater than 16
+
+            //reduce method 
+
+            const reduceFunctionTesting = numbers.reduce((acc, curr) => {
+                //below method have accumulator and current value current value is all values in an array
+                return (acc = acc + curr);
+            }, 0) //here this 0 value is the acc initial value 
+            //basically the whole function acts as a sum function
+
+            console.log(reduceFunctionTesting);
+            //output: 99
+
+            //for finding max number of an array
+            const maxValueOfAnArray = (numbers, i) => {
+
+                let max = 0;
+
+                for (let i = 0; i < numbers.length; i++) {
+                    if (numbers[i] < max) {
+                        //here it will check that the value of array if greater than initial now or not and if it is then change the previous value with this new value which is greater than the initial value and same iterate this till we get thw max value
+                        max = numbers[i]
+                    }
+                    return max
+                }
+            }
+            console.log(maxValueOfAnArray(numbers));
+
+            //output: 45
+
+            //max value by reduce method 
+
+            const maxValueByReduceMethod = numbers.reduce((acc, curr) => {
+                // for (let i = 0; i < numbers.length; i++) {
+                if (curr > acc) {
+                    console.log('====================================');
+                    console.log(curr);
+                    console.log('====================================');
+
+                }
+                // }
+                //here the output came is 45 therefore the max number is 45
+
+            }, 0) //here this 0 value is the acc initial value 
+            //basically the whole function acts as a sum function
+
+            console.log(maxValueByReduceMethod);
+
+            // output : 45 (this output we got is without usig the for loop this is the benifit of reduce method)
+
+            // here the output came is 45 therefore the max number is 45
+
+            // real in project practical examples the data which we get from backend through get method in the frontend we will work on it
+
+            const users = [
+                {
+                    firstName: "vaibhav",
+                    lastName: "sutar",
+                    age: 26
+                },
+                {
+                    firstName: "varun",
+                    lastName: "dhavan",
+                    age: 36
+                },
+                {
+                    firstName: "alia",
+                    lastName: "bhat",
+                    age: 36
+                },
+                {
+                    firstName: "ranbir",
+                    lastName: "kapoor",
+                    age: 40
+                },
+            ]
+
+            //Real map function practical working
+
+            //now here we will find the firstname of each user map function doesnt require to do in a function because map is already a function
+            const usernameFetchingFromBackend = users.map((item) => {
+                return item.firstName + " " + item.lastName;
+            })
+            console.log('===============xddsd===============');
+            console.log(usernameFetchingFromBackend);
+            console.log('==============sdds==================');
+
+            // output: (4) ['vaibhav sutar', 'varun dhavan', 'alia bhat', 'ranbir kapoor']
+
+            //here we will find the object whose age is 36
+
+            const conditionalAgeFetchingFromBackend = users.map((item, index) => {
+                key = index;
+                if (item.age == 36) {
+                    return item.firstName + " " + item.lastName + " Age " + item.age;
+                }
+                // return item.firstName + " " + item.lastName;
+            })
+
+            console.log(conditionalAgeFetchingFromBackend);
+
+            //output : (4) [undefined, 'varun dhavan Age 36', 'alia bhat Age 36', undefined]
+
+
+
+            const conditionalAgeAsLessThanFortyFetchingFromBackend = users.filter((item) => {
+                if (item.age < 40) {
+                    return users;
+                }
+            })
+
+            console.log(conditionalAgeAsLessThanFortyFetchingFromBackend);
+            // output: 0: { firstName: 'vaibhav', lastName: 'sutar', age: 26 }
+            // 1: { firstName: 'varun', lastName: 'dhavan', age: 36 }
+            // 2: { firstName: 'alia', lastName: 'bhat', age: 36 }
+
+
+            //MAP, FILTER FUNCTION CHAINING
+
+            //now we will only write firstName AND lastName from above less than 40 condition variable using map function on filter function
+
+            const conditionalAgeAsLessThanFortyAndMapFetchingFromBackend = users.filter((item) => {
+                if (item.age < 40) {
+                    return item.age;
+                }
+            }).map(item=> item.firstName + " " + item.lastName);
+            //here 2 function used
+
+            console.log(conditionalAgeAsLessThanFortyAndMapFetchingFromBackend);
+
+            const reverseOfArray = numbers.reverse();
+            console.log('====================================');
+            console.log(reverseOfArray);
+            console.log('====================================');
+
+            //CLOSURES
+
+            var sum = function(a,b){
+                console.log(a, " a of sum function");
+                var c=4
+                return function subFunction(b){
+                    return a+b+c
+
+                }
+            }
+            var store = sum(5);
+            // //here now the varible store has also the return function which u can call also
+            var final = store(6);
+            // //here again calling is possibel because function has return and again return has return means how much u have return that much u can call 
+            // console.log('====================================');
+            // console.log(final);
+            // // console.log((sum(5))(6)); //above output has final which is equal to twice of sum function calling as given in this console final = (sum(5))(6)
+            // console.log('====================================');
+
+            // var sum = function(a,b,c){
+            //     return {
+            //         getSumOfTwoSubFunction: function(){
+            //             return a+b;
+            //         },
+            //         getSumOfThreeSubFunction: function(){
+            //             return a+b+c;
+            //         },
+            //     }
+            // }
+            // var store = sum(3,4,5);
+            
+            // // console.log(store());
+            // //by this error will be store is not a function because in store u called a function sum again calling it cannot be possible because sub functions are two he cannot identify which function it is therefore specify which function to call
+            // console.log(store.getSumOfTwoSubFunction());
+            // //output : 7
+            // console.log(store.getSumOfThreeSubFunction());
+            // //output : 12
+ 
+
+            // // const numbers = [4,5,9,15]
+
+            let max = -1000;
+            let min = 1000;
+            for (let number of numbers) {
+                if(number > max)
+                    max = number; 
+                if(number < min){
+                    min = number
+                }                
+            }
+            console.log('=================max & min================');
+            console.log(max);
+            console.log(min);
+
+            //output: 25 4
+
+            //REMOVE DUPLICATES FROM AN ARRAY
+
+            // METHOD 1
+
+            let a = [1,2,5,1,2,9]
+
+            let b = []
+
+            for (let i = 0; i < a.length; i++) {
+              if(b.indexOf(a[i]) === -1){
+                b.push(a[i])
+              }
+              
+            }
+
+            // for (let i = 0; i < a.length; i++) {
+            //     if(b.indexOf(a[i]) === -1){
+            //         // console.log(b.indexOf(a[i])=== -1); //this console value is false
+            //         //here b.index
+            //         b.push(a[i]);
+                    
+            //     }                
+            // }
+            // console.log('====================================');
+            // console.log(b);
+            // console.log('====================================');
+
+            // output: (4) [1, 2, 5, 9]
+
+            // METHOD 2
+
+            a.sort();
+
+            let _temp;
+
+            for (let i = 0; i < a.length; i++) {
+                if(a[i] !== _temp){
+                    b.push(a[i]);
+                    _temp = a[i];
+                }                
+            }
+
+            console.log(b);
+
+
+            // METHOD 3
+            //this function of no duplicate can be achieved by set function
+            console.log([... new Set(a)]);
+
+             // output: (4) [1, 2, 5, 9]
+
+            
+
+            // console.log(numbers.concat(2,4,5,4,6,22,2,6,9,"abc"));
+
+            // const array1 = ['a', 'b', 'c'];
+
+            // array1.forEach(element => console.log(element + 2));
+
+            // // output : a2 b2 c2
+
+            // // console.log(numbers.entries());
+            // // console.log(numbers.every());
+            // // console.log(numbers.fill(1,2,3,4,5,6,7,));
+            // console.log(numbers.forEach(x=>x));
+            // console.log(numbers.join());
+            // console.log(numbers.keys());
+            // console.log(numbers.some());
+            // console.log(numbers.values());
+            // console.log(numbers.toString());
+        }
+
+        //print the date in readable format
+        var today = new Date();
+        let day = today.getDay();
+        const days = ["sunday","monday","tuesday","wed","thurs","fri","sat"]
+        let hour = today.getHours();
+        let minute = today.getMinutes();
+        let seconds = today.getSeconds();
+        console.log(days[day]+" " +hour+" " +minute+" " +seconds); 
+        console.log(days[5]);
+
+        // for finding the values between 20 to 100 
+        var n=10;
+        if (n>20 && n<100) {
+            var h1=document.createElement("h1");
+            var h1tag = h1.textContent = `${n}`;
+            document.write(h1tag);
+            console.log(h1.textContent);
+            
+        } else {
+            var h1=document.createElement("h1");
+            var h1tag = h1.textContent = `${n}`;
+            document.write(h1tag + ": is not between 20 to 100");
+            console.log("not found");;
+        }
+        // console.log(n);
+
+        //for printing current content of window
+        // button created in body of html
+        var button = document.getElementById("button")
+        var buttonAgain = document.getElementById("button-again")
+        function printWindow(){
+            window.print();
+        }
+        function closeWindow(){
+            window.close();
+        }
+        button.addEventListener("click",printWindow);
+
+        for (let year = 2014; year < 2050; year++) { 
+            var d = new Date(year, 0, 1)
+            //above (year, 0, 1) =(year,month = jan, date = 1st)
+            if(d.getDay()===0){
+                console.log(year);
+            }                   
+        }
+
+        var todayDate = new Date().toISOString().slice(0, 10);
+        //here slice is used to get the value upto 10digits only
+        console.log(todayDate);
+        let datefinal = todayDate[i=0];
+        console.log("for getting index value of date", datefinal);
+
+        // Get a random integer from 1 to 10 inclusive
+ const num = Math.ceil(Math.random() * 10);
+ //for ceil is used to give the value not after .
+console.log(num);
+
+
+     function alertANumber(){
+        const gnum = prompt('Guess the number between 1 and 10 inclusive');
+        if (gnum == num)
+   console.log('Matched');
+  else
+   console.log('Not matched, the number was '+gnum);
+     }
+
+//  const gnum = prompt('Guess the number between 1 and 10 inclusive');
+//  if (gnum == num)
+//    console.log('Matched');
+//   else
+//    console.log('Not matched, the number was '+gnum);
+
+      var christmasDate = new Date().toISOString().slice(0, 10);
+      var datePrevious = [2,0,1,4,1,0,8];
+      datePrevious[0];
+      console.log(datePrevious[3]);
+      var settingADate = new Date(2022,10,26).toISOString().slice(0, 10);
+      console.log(settingADate);
+    //   console.log(window.close);
+
+    // for getting the url of the document
+
+    console.log(document.URL);
+
+    const filename = "vaibhav.js"
+
+    const filenameExtension = filename.split(".");
+
+    console.log(filenameExtension);
+
+    const filenameExtension1 = filename.split(".").shift();
+
+    console.log(filenameExtension1);  
+
+//for the getting a value which gives difference between 13 and provided number while calling the funvction
+    function difference(n){
+        if(n<13){
+            console.log(13-n);
+        } else{
+            console.log((n-13)*2);
+            
+        }
+    } 
+    difference(12);
+
+
+   function sumofTwo(a,b){
+       if(a!==b){
+           console.log(a+b);
+       } else{
+           console.log((a+b)*3);
+           
+       }
+   }
+
+   sumofTwo(2,3);
+
+   function TwoIntegerCheckingFor50(a,b){
+       if(a==50 || b==50){
+           console.log("input has value as 50")
+       } else if((a+b)==50){
+        console.log("input has value as 50 because of a+b")          
+       } else{
+        console.log("input not have value as 50")
+       }
+   }
+
+   TwoIntegerCheckingFor50(25,25);
+
+   function forintegernegativeandpositivechecking(x,y){
+       if(x<0 && y>0 || x>0 && y<0){
+           return true;
+       } else{
+           return false;
+       }
+   }
+
+   console.log(forintegernegativeandpositivechecking(-2,2));
+
+   // to add mr before name 
+
+   function addmrinname(name){
+       return "ddf" + name;
+
+   }
+
+   console.log(addmrinname("vaibhav"));
+
+   const namesArray = ["vaibhav", "varun"];
+   console.log(namesArray[0]);
+
+   if(namesArray[0]=="vaibhav"){
+       var abc = namesArray[0] = "Mr vaibhav";
+       console.log(abc);
+   }
+
+   console.log(namesArray);
+
+   function subStringPractice(str){
+    // const  str1 = str.substring(1,(str.length-1))
+          let str2 = str.charAt(0) + str + str.charAt(str.length-1)
+          console.log(str2);
+   }
+
+   console.log(subStringPractice("amar"))
+
+   function forcheckingDivsibleBy3(str){
+        if(str%3 ==0 || str%7 ==0){
+            return true;
+        } else{
+            console.log("division not possible");
+        }
+   }
+   console.log(forcheckingDivsibleBy3(9));
+
+   function forcheckingjavaprefix(str){
+        if(str[0] =="j" && str[1] =="a" && str[2] =="v" && str[3] =="a"){
+            return true;
+        } else{
+            console.log("prefix java is not written");
+        }
+   }
+   console.log(forcheckingjavaprefix("python"));
+
+   function valuebetween50to99(str){
+        if(n>50 || n<90){
+            return true;
+        } else{
+            console.log("value is not between 50 and 90");
+        }
+   }
+   console.log(valuebetween50to99(65));
+
+   function checkingthescriptstring(str){
+        if(str.substring(4,10)=="script"){
+            return "str has javascript return";
+        } else{
+            console.log("not have javascript");
+        }
+   }
+   console.log(checkingthescriptstring("javascript"));
+
+   function largestofthree(a,b,c){
+        if(a>b && a>c){
+            return `largest number is a: ${a}`;
+        } else if(b>a && b>c){
+            return `largest number is b: ${b}`;
+        }else if(c>a && c>b){
+            return `largest number is c: ${c}`;
+        }else{
+            return false
+        }
+   }
+   console.log(largestofthree(5,6,7));
+
+   function nearestValue(a,b){
+        if(a!==b){
+            a1 = Math.abs(a-100);
+            b1 = Math.abs(b-100);
+            if(a1<b1){
+                return a
+            } else if(b1<a1){
+                return b
+            } else {return false}
+        }
+   }
+   console.log(nearestValue(90,95));  
+
+   function lastIndexIsZero(a,b,c){
+        if(a%10 == 0 || b%10 == 0 || c%10 == 0){
+            return "there is a value divisible by 10";
+        }else{
+            return false
+        }
+   }
+   console.log(lastIndexIsZero(54,6,70));  
+
+    function first3aslower(str){
+        var str1 = str.substring(0,3).toLowerCase();
+        console.log(str1);
+        var str2 = str.substring(3,(str.length)); 
+        console.log(str2);
+        return str1 + str2
+   }
+   console.log(first3aslower("VAIBHAV"));  
+
+   function finalExam(typeOfExam,totalMarks){
+        if(typeOfExam.substring(0,5) == "final"){
+            if(totalMarks>=90){
+                return "student got A+ in finals";
+            } else {
+                return "student got less than A+ in finals"
+            }
+        }else if(typeOfExam.substring(0,4) == "semi") {
+            if(totalMarks>=89){
+                return "student got A+ in semi exam";
+            } else {
+                return "student got less than A+ in semi exam"
+            }
+        }
+   }
+   console.log(finalExam("semi-exam",89)); 
+
+
+   function sumandrange(a,b){
+        var sum = a+b;
+        if (sum>50 && sum<80) {
+            return 65
+        } else {
+            return 90
+        }
+   }
+   console.log(sumandrange(9,10)); 
+
+
+   function numbersequalornotbeteen3(a,b,c){
+        if (a==b && a==c) {
+            return 30
+        } else if(a==b || b==c || a==c){
+            return 40
+        } else {return false}
+   }
+   console.log(numbersequalornotbeteen3(10,10,9)); 
+
+   function numberlastdigitas0(a,b,c){
+        let d=a.toString()
+        let e=b.toString()
+        let f=c.toString()
+        if (d[d.length-1]==0 && e[e.length-1]==0 && f[f.length-1]==0) {
+            return "3 values has rightmost digit as same"
+        } else if((d[d.length-1]==0 && e[e.length-1]==0) || (e[e.length-1]==0 && f[f.length-1]==0) || (d[d.length-1]==0  && f[f.length-1]==0) ){
+            return "2 values has rightmost digit as same"
+        } else {return false}
+   }
+   console.log(numberlastdigitas0(10,10,10)); 
+
+
+ function twovalueschecksum(a,b){
+     var sum= a+b;
+     var difference = a-b;
+        if (a==15 || b==15) {
+            return "element has one of 15 value"
+        } else if(sum==15){
+            return "sum is 15";           
+        } else if(difference==15){
+            return "difference is 15";
+        } else {
+            return false;
+        }
+   }
+   console.log(twovalueschecksum(15,10)); 
+
+
+   function string_reverse(str) 
+{
+    return str.split("").reverse().join("");
+}
+
+console.log(string_reverse("w3resource"));
+console.log(string_reverse("www"));
+console.log(string_reverse("JavaScript"));
+
+
+ function capitalisefirstLetter(str){
+     var capitalise = str[0].toUpperCase();
+     return capitalise + str.substring(1,(str.length));
+   }
+   console.log(capitalisefirstLetter("vaibhav")); 
+
+   
+   function sortingastrign(str){
+     return str.split("").sort().join(""); 
+   }
+   console.log(sortingastrign("vaibhav")); 
+
+
+    function replaceP(str){
+     var replacedP = str.replace(/[^p]/g,"kk"); 
+     return replacedP
+   }
+   console.log(replaceP("papprot")); 
+
+   function repeatatext(str,n){
+     if(n<0){
+         return false
+     } else{
+         return str.repeat(n);
+     }
+   }
+   console.log(repeatatext("vaibhav",2)); 
+
+   function repeatatextfor3(str){
+     if(n<0){
+         return false
+     } else{
+         var str1 = str.substring((str.length-3),(str.length))
+         return str1.repeat(n);
+     }
+   }
+   console.log(repeatatextfor3("vaibhav",11)); 
+
+   function concate(str1,str2){
+     if(n<0){
+         return false
+     } else{
+         var stra = str1.substring(1,(str1.length))
+         var strb = str2.substring(1,(str2.length))
+         return stra + strb;
+     }
+   }
+   console.log(concate("vaibhav","arun"));
+
+
+   function rightThree(str){
+     return str.slice(-3) + str.slice(0,-3);
+   }
+   console.log(rightThree("vaibhav"));  
+
+   function middle3(str){
+     return str.substring(((str.length/2)-2),((str.length/2)+1));
+   }
+   console.log(middle3("vaibhav"));  
+   
+   function checkpandt(str){
+
+    //  for (let i = 0; i < str.length; i++) {
+        var strP = str.replace(/[^p]/g,"");
+        var strT = str.replace(/[^t]/g,"");
+        console.log("p replacements",strP);
+        var strplength = strP.length
+        var strtlength = strT.length
+        console.log("number of p",strplength);
+        console.log("number of t",strtlength);
+         
+         
+    //  }
+   }
+   console.log(checkpandt("pppttt")); 
+
+   function fourCopiesOflast3(str){
+     var last3digits = str.substring((str.length-3),str.length);
+     return last3digits.repeat(4);
+    //  console.log(last3digits);
+     
+   }
+   console.log(fourCopiesOflast3("vaibhav"));  
+
+   function concate2strings(str1,str2){
+    let data = ["dcdc"]
+    Array.prototype.concat(...data)
+    data.concat("hbvhvhv")
+     console.log(Array.prototype.concat(...data,"gfbfvbfv"))
+   }
+   console.log(concate2strings("vaibhav","varun"));  
+
+   function lastandfirst2characters(str,number){
+    var first = str.substring(0,number); 
+    console.log(first);
+    var slice = str.substring((str.length-number),str.length)
+    console.log(slice);
+    return first+slice;
+    // console.log(slice);
+    
+     
+   }
+   console.log(lastandfirst2characters("vaibhav",3));
+   
+   function arraysrotation(){
+    let arrayrotate = [1,2,3];
+
+    for (let i = arrayrotate.length; i >= 0; i--) {
+        // return arrayrotate[i]
+        console.log(arrayrotate[i])
+        
+    }
+
+    // console.log(outputofarray);
+    
+    
+     
+   }
+   console.log(arraysrotation());
+
+
+    function checkingone(){
+    let arrayrotate = [2,2,3];
+
+    if(arrayrotate[0] ==1 || arrayrotate[arrayrotate.length] ==1 ){
+        return true;
+    } else {
+        return false;
+    }
+
+    // console.log(outputofarray);
+    
+    
+     
+   }
+   console.log(checkingone());
+
+   function firstandlastequal(){
+    let arrayrotate = [2,2,2];
+
+    if(arrayrotate[0] == arrayrotate[arrayrotate.length-1]){
+        return true;
+    } else {
+        return false;
+    }
+
+    // console.log(outputofarray);
+    
+    
+     
+   }
+   console.log(firstandlastequal());
+
+
+   function largervaluemix(){
+    let arrayrotate = [50,2,40];
+
+    if(arrayrotate[0] > arrayrotate[arrayrotate.length-1]){
+        var firstvalue = arrayrotate[0] = arrayrotate[0];
+        var secondvalue = arrayrotate[1] = arrayrotate[0];
+        var lastvalue = arrayrotate[2] = arrayrotate[0];
+        var array = [firstvalue,secondvalue,lastvalue]
+        return array
+    } else if(arrayrotate[0] < arrayrotate[arrayrotate.length-1]){
+        var firstvalue = arrayrotate[0] = arrayrotate[arrayrotate.length-1];
+        var secondvalue = arrayrotate[1] = arrayrotate[arrayrotate.length-1];
+        var lastvalue = arrayrotate[2] = arrayrotate[arrayrotate.length-1];
+        var array = [firstvalue,secondvalue,lastvalue]
+        return array
+    } else{
+        return false;
+    }
+
+    // console.log(outputofarray);
+    
+    
+     
+   }
+   console.log(largervaluemix());
+
+
+    function largervaluemix(){
+    let arrayrotate = [50,2,40];
+
+    if(arrayrotate[0] > arrayrotate[arrayrotate.length-1]){
+        var firstvalue = arrayrotate[0] = arrayrotate[0];
+        var secondvalue = arrayrotate[1] = arrayrotate[0];
+        var lastvalue = arrayrotate[2] = arrayrotate[0];
+        var array = [firstvalue,secondvalue,lastvalue]
+        return array
+    } else if(arrayrotate[0] < arrayrotate[arrayrotate.length-1]){
+        var firstvalue = arrayrotate[0] = arrayrotate[arrayrotate.length-1];
+        var secondvalue = arrayrotate[1] = arrayrotate[arrayrotate.length-1];
+        var lastvalue = arrayrotate[2] = arrayrotate[arrayrotate.length-1];
+        var array = [firstvalue,secondvalue,lastvalue]
+        return array
+    } else{
+        return false;
+    }
+
+    // console.log(outputofarray);
+    
+    
+     
+   }
+   console.log(largervaluemix());
+
+var arrValuesDataTest = [
+  {
+    id: "27",
+    "0": {
+      m_id: "12_ns",
+      name: "Sam",
+      date: "2021-02-28",
+      marks: "55.00",
+      comments: "Repeat test"
+    },
+    "1": {
+      m_id: "22_ns",
+      name: "Mark",
+      date: "2019-12-08",
+      marks: "80.00",
+      comments: "Good marks"
+    }
+  },
+  {
+    id: "30",
+    "0": {
+      m_id: "19_ms",
+      name: "Sam",
+      date: "2019-12-11",
+      marks: "25.00",
+      comments: null
+    }
+  }
+];
+
+arrValuesDataTest.filter((item)=> 
+Object.keys(item).forEach(function (key) {
+    var value = item[key];
+    Object.filter = (value, predicate) => 
+    Object.keys(value)
+          .filter( key => predicate(value[key]) )
+          .reduce( (res, key) => (res[key] = value[key], res), {} );
+          var filtered = Object.filter(value, score => score)
+console.log(filtered.name == "Sam" ? "Sam found" : null);
+console.log(JSON.stringify(filtered.date) && JSON.stringify(filtered.date).substring(1,5) === "2019" ? filtered:null );
+})
+
+
+)
+
+
+let dataAfterInnerChange = []
+const arrayFilterWithKeyException = arrValuesDataTest.map((item,index)=> {
+     for (let i = 0; i < 3; i++) {
+      dataAfterInnerChange.push(item[Object.keys(item)[i]])   
+     }})
+console.log("arrayFilterWithKeyException",arrayFilterWithKeyException);
+console.log("dataAfterInnerChange",[dataAfterInnerChange[0],dataAfterInnerChange[1]].filter((item)=>{
+    return item.name == "Sam"
+}));
+
+const innerUnwind = []
+const innerdataValue = arrValuesDataTest.map((item,index)=>{
+    for (let j = 0; j < arrValuesDataTest.length; j++) {
+        innerUnwind.push(item[Object.keys(item)[j]])
+    }
+    const filter =  innerUnwind.filter((item)=>{
+        return item.name == 'Sam'
+    }).filter((item)=> {
+        return item.date == "2019-12-11"
+    })
+    return filter
+})
+
+
+console.log("innerdataValue",innerdataValue);
+
+
+
+function profittotal(){
+//    let beread = i;
+//    let remainingbread = j;
+//    let samosa = k;
+//    let vada = l;
+//bread = 9 but for it is not the pav it is bread slice for 1 vadapav require 2 slice of bread and for 1 samosa 2 bread
+//samosa = 3
+//vada = 2
+   let vadapav_price = 10;
+   let samosapav_price = 15;
+   let profit = 0
+   if(samosapav_price>vadapav_price){
+       //now below I have keep i as samosa pav req 6 breads and k as 3 samosa
+       for (let i = 9; i>=3; i=i-2) {
+           for (let k = 3; k >=1; k--) {
+            //    profit+= (i-(i-2))*((k)-(k-1))*7.5 
+               (profit<45)? ((profit+= (i-(i-2))*((k)-(k-1))*7.5)):"profit initial not set"
+               if(profit>46){
+                   break;
+               }
+            //    console.log(profit)
+               //now below I have keep j as remaining 3 breads and l as 2 vadapavs
+
+               for (let j = 3; j >=1; j=j-2) {
+                   for (let l = 2; l >=1; l--) {
+                    (profit<=45)? ((profit+= (j-(j-2))*((l)-(l-1))*5)):"profit exceeds more than 45"
+               var profitfinal = profit;
+
+               console.log("max profit is : ",profitfinal);                           
+                   }                   
+               }
+           }          
+       }
+   } else {return false}
+
+}
+console.log(profittotal())
+
+
+// find missing number from 1 to 10
+const arrTest = [1,3,2,4,5,7,8,9,10]
+let missingnumber
+for (let i = 0; i < 10; i++) {
+   if (arrTest.includes(i + 1)) {
+    console.log("missingnumber not found");
+   } else{
+    missingnumber = i + 1
+    console.log("missingnumber", missingnumber);
+   }
+   
+}
+
+//what will be output of dataArrayTest
+const dataArrayTest = [1,2,3].filter(elem=> {
+    return '';
+})
+
+console.log("dataArrayTest", dataArrayTest); 
+// output : []
+
+
+//what is the output of following
+
+var abc4 = "fvfvf"
+
+const objTest = {
+  abc4 : "fvffvffvfvfv",
+  cb : ()=>{
+    console.log(this.abc4)
+  }
+}
+
+objTest.cb()
+// output : fvfvf
+
+
+// Write a function to remove duplicates from an array.
+
+function removeDuplicates(arr) {
+  return [...new Set(arr)];
+}
+
+const numbers = [1, 2, 2, 3, 4, 4, 5];
+console.log(removeDuplicates(numbers)); 
+// output: [1, 2, 3, 4, 5]
+
+
+// Write a function to find the factorial of a number.
+
+function factorial(num) {
+  if (num === 0 || num === 1) {
+    return 1;
+  } else {
+    return num * factorial(num - 1);
+  }
+}
+
+console.log(factorial(5)); 
+// output: 120
+
+
+function factorial2(n) {
+  let result = 1;
+  for (let i = 1; i <= n; i++) {
+    result = result*i;
+  }
+  return result;
+}
+console.log(factorial2(5)); 
+// output: 120
+
+
+
+function factorialTesting(n){
+    let initialValueForFactorial = 1
+    for (let i = 1; i <= n; i++) {
+        initialValueForFactorial = initialValueForFactorial*i
+    }
+    return initialValueForFactorial
+}
+
+console.log(factorialTesting(5));
+//Write a function to check if a string is a palindrome.
+
+
+//check when thew string is reverse it gives same output
+
+function isPalindrome(str) {
+  const reversedStr = str.split("").reverse().join("");
+  return str === reversedStr;
+}
+
+console.log(isPalindrome("racecar")); 
+// output: true
+
+//Write a function to sort an array of numbers.
+
+function sortNumbers(arr) {
+  return arr.sort((a, b) => a - b);
+}
+
+const numbersSortingArray = [3, 2, 1, 5, 4];
+console.log(sortNumbers(numbersSortingArray)); // output: [1, 2, 3, 4, 5]
+
+//Write a function to check if two strings are anagrams.
+
+function isAnagram(str1, str2) {
+  const sortedStr1 = str1.split("").sort().join("");
+  const sortedStr2 = str2.split("").sort().join("");
+  return sortedStr1 === sortedStr2;
+}
+
+console.log(isAnagram("silent", "listen")); 
+// output: true
+
+
+// Write a function to find the second-largest number in an array.
+
+function findSecondLargest(arr) {
+  const sortedArr = arr.sort((a, b) => b - a);
+  return sortedArr[1];
+}
+
+const largestnumbers = [3, 2, 1, 5, 4];
+console.log(findSecondLargest(largestnumbers)); 
+// output: 4
+
+//Write a function to flatten a nested object.
+
+function flattenObject(obj) {
+  const flattened = {};
+
+  function flatten(currentObj, currentKey) {
+    if (typeof currentObj !== "object" || currentObj === null) {
+      flattened[currentKey] = currentObj;
+      return;
+    }
+
+    console.log("Object.entries(currentObj)", Object.entries(currentObj));
+    // output of this is [[0: "a",1: 1],[0:"b",1:{c: 2, d: {…}}]
+
+    // for (const [key, value] of Object.entries(currentObj)) {
+    //   const newKey = currentKey ? `${currentKey}.${key}` : key;
+    //   flatten(value, newKey);
+    // }
+  }
+  flatten(obj, "a");
+
+  return flattened;
+}
+
+const nestedObject = {
+  a: 1,
+  b: {
+    c: 2,
+    d: {
+      e: 3,
+    },
+  },
+};
+
+console.log(flattenObject(nestedObject)); 
+// output: { "a": 1, "b.c": 2, "b.d.e": 3 }
+
+
+let prime = []
+let trueValue = false
+function primeNumbers(num){
+   
+   for (let j = 2; j < num; j++) {
+    if(num%j == 0){
+        trueValue = true
+    }
+   }
+   if(trueValue == false){
+    prime.push(num)
+   }
+   trueValue = false
+}
+
+for (let i = 2; i < 20; i++) {
+    primeNumbers(i)
+}
+
+console.log("primeNumbers",prime);
+    
+
+// Write a function to implement binary search in a sorted array
+
+
+function binarySearch(arr, target) {
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    const current = arr[mid];
+
+    if (current === target) {
+      return mid;
+    } else if (current < target) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+
+  return -1;
+}
+
+const sortedArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+console.log(binarySearch(sortedArray, 5)); 
+// output: 4
+
+// Write a function to find all possible combinations of a set of numbers.
+
+function findCombinations(nums) {
+  const result = [];
+
+  function backtrack(current, start) {
+    result.push(current);
+
+    for (let i = start; i < nums.length; i++) {
+      backtrack([...current, nums[i]], i + 1);
+    }
+  }
+
+  backtrack([], 0);
+
+  return result;
+}
+
+const numbersA = [1, 2, 3];
+console.log(findCombinations(numbersA)); // output: [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]
+
+// findDuplicates of an array
+
+function findDuplicates(arr) {
+  const duplicates = [];
+  arr.forEach((num, index) => {
+    if (arr.indexOf(num, index + 1) !== -1 && duplicates.indexOf(num) === -1) {
+      duplicates.push(num);
+    }
+  });
+  return duplicates;
+}
+
+console.log(findDuplicates([1, 2, 3, 4, 1, 2, 5]));
+// Output: [1, 2]
+
+
+[1, 2, 3, 4, 1, 2, 5].indexOf(1, 2)
+
+
+// Reverse words "apple banana kiwi" Output:- "kiwi banana apple" &   "I am John Doe" Output -  "Doe John am I"
+
+const words = ["apple", "banana", "kiwi"]
+let reverseWords = []
+
+for (let i = words.length-1; i >= 0; i--) {
+    reverseWords.push(words[i])
+}
+
+console.log("reverseWords",reverseWords);
+
+// Split a string but don’t split when character repeats: String input = "aHHHbYY"; | Output would be like: ["a", "HHH", "b", "YY"]
+
+// Program to identify and remove all repeated elements from an array. Input: Array1 : [1,4,9,1, 3,11,4, 9 ] Output: Array1: [1,3,4,9,11]
+
+let arrayTestData = [1,4,9,1,3,11,4,9 ]
+
+let finalArrayTestData = []
+
+for (let i = 0; i < arrayTestData.length; i++) {
+    if(finalArrayTestData.indexOf(arrayTestData[i]) == -1){
+        finalArrayTestData.push(arrayTestData[i])
+    }
+    
+}
+
+console.log("finalArrayTestData",finalArrayTestData)
+
+
+// Can you write a query for below
+ 
+// table a
+ 
+// column b
+ 
+// values
+ 
+// 1
+ 
+// 0
+ 
+// 0
+ 
+// 0
+ 
+// 1
+ 
+// 0
+ 
+// Update 1 by 0 and 0 by 1
+
+
+//Write a prime number code – WHICH ACCEPTS A NUMBER FROM USER and after entering into the port – check Prime number or not
+
+
+function findingDuplicates(arr){
+  let duplicates = []
+  let withoutDuplicates = []
+  arr.forEach((num, index)=>{
+    if (arr.indexOf(num) !== -1 && withoutDuplicates.indexOf(num) == -1) {
+      withoutDuplicates.push(num)
+    } else {
+      duplicates.push(num)
+    }
+  })
+  console.log("duplicates",duplicates);
+  console.log("withoutDuplicates",withoutDuplicates);
+}
+
+findingDuplicates([1, 2, 3, 4, 1, 2, 5])
+
+
+
+//FIND NUMBER OF SAME STRING IN AN ARRAY
+
+const target = 'banana';
+
+function sameString(arr){
+    let count = 1
+    let samestring = []
+   for (let i = 0; i < arr.length; i++) {
+      for (let j = i+1; j < arr.length; j++) {
+        if (arr[i] == arr[j]) {
+            count++
+            samestring.push(arr[i],count)
+        }
+      }    
+      count = 1
+   }
+   const max = Math.max.apply(null,samestring.filter((item)=>{
+    return typeof item == "number"
+   }))
+   const indexOfmax = samestring.indexOf(max)
+   const maxString = samestring[indexOfmax -1] 
+   return maxString
+}
+console.log("sameString",sameString(['apple', 'banana', 'cherry', 'banana', 'apple', 'banana']));
+
+
+// const count = arrNumberOfString.reduce((acc, val) => {
+//   if (val === target) {
+//     acc++;
+//   }
+//   return acc;
+// }, 0);
+
+// console.log("count", count); 
+// Output: 3
+
+const arrNumberOfString = ['apple', 'banana', 'cherry', 'banana', 'apple', 'banana'];
+let totalElements = 0
+
+for (let i = 0; i < arrNumberOfString.length; i++) {
+  const element = arrNumberOfString[i];
+  if(element == "banana" ){
+    totalElements = totalElements + 1
+  }
+}
+console.log("totalElements", totalElements);
+
+
+
+// Problem:
+// Write a function that takes two arrays of integers as input and returns an array of integers representing the intersection of the two arrays. The returned array should contain only unique values, and the order of the values should be the same as they appear in the first array  input: [1, 2, 2, 3, 4], [2, 2, 4, 5, 6]output: [2, 4].
+
+function intersection(arr1, arr2) {
+    let removeDuplicatesValuesForarr1 = []
+    for (let i = 0; i < arr1.length; i++) {
+        if (removeDuplicatesValuesForarr1.indexOf(arr1[i]) == -1) {
+            removeDuplicatesValuesForarr1.push(arr1[i])
+        }
+    }
+    let removeDuplicatesValuesForarr2 = [...new Set(arr2)]
+    let finalIntersection = []
+    for (let j = 0; j < removeDuplicatesValuesForarr1.length; j++) {
+        if (removeDuplicatesValuesForarr1.includes(removeDuplicatesValuesForarr2[j])) {
+            finalIntersection.push(removeDuplicatesValuesForarr2[j])
+    }
+    }
+    return finalIntersection
+    
+}
+
+
+console.log("intersection", intersection([1, 2, 2, 3, 4], [2, 2, 4, 5, 6]));
+
+
+
+
+
+
+
+
+   
+
+
+        
+
+
+
+
+    </script>
+</body>
+
+</html>
