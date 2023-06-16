@@ -120,9 +120,12 @@
             // when array has number and string
 
             let arr = [[1, "one", 2, "two"], [3, "three", 4, "four"]];
-            for (var i = 0; i < arr.length; i++) {
-                for (var j = 0; j < arr[i].length; j++) {
-                    console.log(arr[i][j]);
+            
+
+            for (let i = 0; i < arr.length; i++) {
+                for (let j = 0; j < arr[i].length; j++) {
+                       const element = arr[i][j] 
+                       console.log("element",element);                   
                 }
             }
             // output: 1, one, 2, two,3, three, 4, four
@@ -156,11 +159,10 @@
 
             // filter method
 
-            const filterFunctionTesting = numbers.filter((x) => {
-                //below method is used to find the even values
-                return x % 2 === 0;
-                // return x > 16;
+            const filterFunctionTesting = numbers.filter((x)=>{
+                    return x % 2 == 0
             })
+            
 
             console.log(filterFunctionTesting);
             // output when x % 2 === 0;: (3) [4, 16] , because remaining values are odd values
@@ -169,27 +171,25 @@
 
             //reduce method 
 
-            const reduceFunctionTesting = numbers.reduce((acc, curr) => {
-                //below method have accumulator and current value current value is all values in an array
-                return (acc = acc + curr);
-            }, 0) //here this 0 value is the acc initial value 
+            const reduceFunctionTesting = numbers.reduce((acc,curr)=>{
+                return acc += curr
+            },0)
+            //here this 0 value is the acc initial value 
             //basically the whole function acts as a sum function
 
             console.log(reduceFunctionTesting);
             //output: 99
 
             //for finding max number of an array
-            const maxValueOfAnArray = (numbers, i) => {
-
-                let max = 0;
-
-                for (let i = 0; i < numbers.length; i++) {
-                    if (numbers[i] < max) {
-                        //here it will check that the value of array if greater than initial now or not and if it is then change the previous value with this new value which is greater than the initial value and same iterate this till we get thw max value
-                        max = numbers[i]
+            const maxValueOfAnArray = (numbersValue)=>{
+                let max = 0
+                for (let index = 0; index < numbersValue.length; index++) {
+                    if(numbersValue[index] > max){
+                        max = numbersValue[index]
                     }
-                    return max
+                    
                 }
+                return max
             }
             console.log(maxValueOfAnArray(numbers));
 
@@ -256,12 +256,10 @@
 
             //here we will find the object whose age is 36
 
-            const conditionalAgeFetchingFromBackend = users.map((item, index) => {
-                key = index;
-                if (item.age == 36) {
-                    return item.firstName + " " + item.lastName + " Age " + item.age;
+            const conditionalAgeFetchingFromBackend = users.map((item,index)=>{
+                if(item.age == 36){
+                    return users
                 }
-                // return item.firstName + " " + item.lastName;
             })
 
             console.log(conditionalAgeFetchingFromBackend);
@@ -429,15 +427,25 @@
         }
 
         //print the date in readable format
-        var today = new Date();
-        let day = today.getDay();
-        const days = ["sunday","monday","tuesday","wed","thurs","fri","sat"]
-        let hour = today.getHours();
-        let minute = today.getMinutes();
-        let seconds = today.getSeconds();
-        console.log(days[day]+" " +hour+" " +minute+" " +seconds); 
-        console.log(days[5]);
+        // var today = new Date();
+        // let day = today.getDay();
+        // const days = ["sunday","monday","tuesday","wed","thurs","fri","sat"]
+        // let hour = today.getHours();
+        // let minute = today.getMinutes();
+        // let seconds = today.getSeconds();
+        // console.log(days[day]+" " +hour+" " +minute+" " +seconds); 
+        // console.log(days[5]);
 
+        const dateDate = new Date()
+        const hour = dateDate.getHours()
+        const day = dateDate.getDay()
+        const minutes = dateDate.getMinutes()
+        const month = dateDate.getMonth()
+        const year = dateDate.getUTCFullYear()
+        const days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday']
+
+        const outputDate = days[day] + " " + hour + " " + minutes + ' ' + (month+1) + ' ' + year
+        console.log(outputDate);
         // for finding the values between 20 to 100 
         var n=10;
         if (n>20 && n<100) {
@@ -466,12 +474,21 @@
         }
         button.addEventListener("click",printWindow);
 
-        for (let year = 2014; year < 2050; year++) { 
-            var d = new Date(year, 0, 1)
-            //above (year, 0, 1) =(year,month = jan, date = 1st)
-            if(d.getDay()===0){
-                console.log(year);
-            }                   
+        // for (let year = 2014; year < 2050; year++) { 
+        //     var d = new Date(year, 0, 1)
+        //     //above (year, 0, 1) =(year,month = jan, date = 1st)
+        //     if(d.getDay()===0){
+        //         console.log(year);
+        //     }                   
+        // }
+
+        for (let year = 2014; year < 2050; year++) {
+            const dateData = new Date(year,0,1)
+            const day2 = dateData.getDay()
+            if (day2 == 0) {
+                console.log('yr',year);
+            }
+            
         }
 
         var todayDate = new Date().toISOString().slice(0, 10);
@@ -545,23 +562,21 @@ console.log(num);
 
    sumofTwo(2,3);
 
-   function TwoIntegerCheckingFor50(a,b){
-       if(a==50 || b==50){
-           console.log("input has value as 50")
-       } else if((a+b)==50){
-        console.log("input has value as 50 because of a+b")          
-       } else{
-        console.log("input not have value as 50")
-       }
+   const TwoIntegerCheckingFor50 = (a,b)=>{
+      if (a == b) {
+        console.log(2*a)
+      } else{
+        console.log(a+b);
+      }
    }
 
    TwoIntegerCheckingFor50(25,25);
 
-   function forintegernegativeandpositivechecking(x,y){
-       if(x<0 && y>0 || x>0 && y<0){
-           return true;
-       } else{
-           return false;
+   const forintegernegativeandpositivechecking = (a,b)=>{
+       if(a>0 && b<0 || a<0 && b>0){
+        return true
+       }else{
+        return false
        }
    }
 
@@ -592,15 +607,14 @@ console.log(num);
           console.log(str2);
    }
 
-   console.log(subStringPractice("amar"))
-
-   function forcheckingDivsibleBy3(str){
-        if(str%3 ==0 || str%7 ==0){
-            return true;
-        } else{
-            console.log("division not possible");
-        }
-   }
+   console.log(subStringPractice("amar"));
+   
+  const forcheckingDivsibleBy3 = (a)=>{
+    if (a%3 == 0) {
+        return true
+    }
+  }
+   
    console.log(forcheckingDivsibleBy3(9));
 
    function forcheckingjavaprefix(str){
@@ -663,7 +677,7 @@ console.log(num);
             return false
         }
    }
-   console.log(lastIndexIsZero(54,6,70));  
+   console.log(lastIndexIsZero(54,6,71));  
 
     function first3aslower(str){
         var str1 = str.substring(0,3).toLowerCase();
@@ -741,10 +755,9 @@ console.log(num);
    console.log(twovalueschecksum(15,10)); 
 
 
-   function string_reverse(str) 
-{
-    return str.split("").reverse().join("");
-}
+ const string_reverse = (str)=>{
+    return str.split("").reverse().join("")
+ }
 
 console.log(string_reverse("w3resource"));
 console.log(string_reverse("www"));
@@ -765,7 +778,12 @@ console.log(string_reverse("JavaScript"));
 
 
     function replaceP(str){
-     var replacedP = str.replace(/[^p]/g,"kk"); 
+     var replacedP = str.split("").map((item)=>{
+        if(item == 'p'){
+            return "x"
+        } 
+        return item
+     }).join("")
      return replacedP
    }
    console.log(replaceP("papprot")); 
@@ -800,10 +818,10 @@ console.log(string_reverse("JavaScript"));
    }
    console.log(concate("vaibhav","arun"));
 
-
    function rightThree(str){
-     return str.slice(-3) + str.slice(0,-3);
+    
    }
+
    console.log(rightThree("vaibhav"));  
 
    function middle3(str){
@@ -988,6 +1006,9 @@ var arrValuesDataTest = [
   }
 ];
 
+
+
+
 arrValuesDataTest.filter((item)=> 
 Object.keys(item).forEach(function (key) {
     var value = item[key];
@@ -1028,7 +1049,11 @@ const innerdataValue = arrValuesDataTest.map((item,index)=>{
 })
 
 
+
+
 console.log("innerdataValue",innerdataValue);
+
+
 
 
 
@@ -1239,17 +1264,18 @@ console.log(flattenObject(nestedObject));
 
 let prime = []
 let trueValue = false
-function primeNumbers(num){
-   
-   for (let j = 2; j < num; j++) {
-    if(num%j == 0){
-        trueValue = true
+function primeNumbers(num) {
+    for (let i = 2; i < num; i++) {
+              
+        if(num%i == 0){
+            trueValue = true
+        }
+
     }
-   }
-   if(trueValue == false){
-    prime.push(num)
-   }
-   trueValue = false
+    if(trueValue == false){
+        prime.push(num)
+    }
+    trueValue = false
 }
 
 for (let i = 2; i < 20; i++) {
